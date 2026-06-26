@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background">
+
+    <!-- Top Section -->
+    <RelativeLayout
+        android:id="@+id/topFoldersSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingTop="28dp"
+        android:paddingBottom="16dp">
+
+        <LinearLayout
+            android:id="@+id/foldersTitleSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/btnSortFolders"
+            android:layout_alignParentStart="true"
+            android:orientation="vertical"
+            android:paddingEnd="12dp">
+
+            <TextView
+                android:id="@+id/tvFoldersTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Folders"
+                android:textColor="@color/text_primary"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvFoldersSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Organize notes into folders"
+                android:textColor="@color/text_secondary"
+                android:textSize="15sp"
+                android:layout_marginTop="4dp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btnSortFolders"
+            android:layout_width="82dp"
+            android:layout_height="42dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@id/foldersTitleSection"
+            android:background="@drawable/bg_note_input"
+            android:gravity="center"
+            android:text="Sort"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:focusable="true" />
+
+    </RelativeLayout>
+
+    <!-- Pinned / Favorites Default Folder -->
+    <LinearLayout
+        android:id="@+id/layoutPinnedFolder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/topFoldersSection"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="14dp"
+        android:orientation="horizontal"
+        android:background="@drawable/bg_note_card"
+        android:padding="18dp"
+        android:gravity="center_vertical"
+        android:clickable="true"
+        android:focusable="true">
+
+        <TextView
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:gravity="center"
+            android:text="📌"
+            android:textSize="24sp"
+            android:background="@drawable/bg_category_icon" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="14dp"
+            android:text="Pinned / Favorites"
+            android:textColor="@color/text_primary"
+            android:textSize="19sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="›"
+            android:textColor="@color/text_hint"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+    <!-- New Folder Button -->
+    <TextView
+        android:id="@+id/btnNewFolder"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_below="@id/layoutPinnedFolder"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="14dp"
+        android:background="@drawable/bg_create_note_button"
+        android:gravity="center"
+        android:text="+ New Folder"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:clickable="true"
+        android:focusable="true" />
+
+    <!-- Folder List -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewFolders"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/btnNewFolder"
+        android:paddingStart="18dp"
+        android:paddingEnd="18dp"
+        android:paddingBottom="18dp"
+        android:clipToPadding="false" />
+
+    <!-- Empty Message -->
+    <TextView
+        android:id="@+id/tvEmptyFolders"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No folders yet.\nCreate your first folder."
+        android:textColor="@color/text_secondary"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:layout_centerInParent="true" />
+
+</RelativeLayout>

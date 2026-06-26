@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background">
+
+    <!-- Top Section -->
+
+    <RelativeLayout
+        android:id="@+id/topAddEditSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingTop="70dp"
+        android:paddingBottom="16dp">
+
+        <LinearLayout
+            android:id="@+id/addEditTitleSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/topRightActionSection"
+            android:layout_alignParentStart="true"
+            android:orientation="vertical"
+            android:paddingEnd="12dp">
+
+            <TextView
+                android:id="@+id/tvAddEditTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create Note"
+                android:textColor="@color/text_primary"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvAddEditSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Write your thoughts here"
+                android:textColor="@color/text_secondary"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/topRightActionSection"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@id/addEditTitleSection"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btnViewAttachments"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:background="@drawable/bg_note_input"
+                android:clickable="true"
+                android:contentDescription="View attachments"
+                android:focusable="true"
+                android:padding="10dp"
+                android:scaleType="center"
+                android:src="@drawable/ic_attachment" />
+
+            <ImageButton
+                android:id="@+id/btnTopChooseFolder"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="15dp"
+                android:background="@drawable/bg_note_input"
+                android:clickable="true"
+                android:contentDescription="Choose folder"
+                android:focusable="true"
+                android:padding="10dp"
+                android:scaleType="center"
+                android:src="@drawable/ic_folder_simple" />
+
+            <ImageButton
+                android:id="@+id/btnTopDeleteNote"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="15dp"
+                android:background="@drawable/bg_note_input"
+                android:clickable="true"
+                android:contentDescription="Delete note"
+                android:focusable="true"
+                android:padding="10dp"
+                android:scaleType="center"
+                android:src="@drawable/ic_delete_simple"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <!-- Scrollable Input Area -->
+    <ScrollView
+        android:id="@+id/inputScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/topAddEditSection"
+        android:layout_above="@id/bottomButtonSection"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/inputSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="16dp">
+
+            <EditText
+                android:id="@+id/etNoteTitle"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/bg_note_input"
+                android:hint="Note title"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_hint"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:singleLine="true" />
+
+            <LinearLayout
+                android:id="@+id/categoryIconRow"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btnAddCategories"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:background="@drawable/bg_note_input"
+                    android:clickable="true"
+                    android:contentDescription="Add categories"
+                    android:focusable="true"
+                    android:padding="13dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_plus_simple" />
+
+                <HorizontalScrollView
+                    android:id="@+id/categoryChipScrollView"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:fillViewport="false"
+                    android:overScrollMode="never"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:id="@+id/categoryChipContainer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal" />
+
+                </HorizontalScrollView>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvSelectedFolder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No folder selected"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="gone"/>
+
+            <LinearLayout
+                android:id="@+id/privacyShortcutIconRow"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btnPrivacyLock"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:background="@drawable/bg_note_input"
+                    android:clickable="true"
+                    android:contentDescription="Lock note"
+                    android:focusable="true"
+                    android:padding="13dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_lock_simple" />
+
+                <ImageButton
+                    android:id="@+id/btnTextShortcut"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="15dp"
+                    android:background="@drawable/bg_note_input"
+                    android:clickable="true"
+                    android:contentDescription="Text shortcut"
+                    android:focusable="true"
+                    android:padding="13dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_shortcut_simple" />
+
+                <ImageButton
+                    android:id="@+id/btnToggleBulletSection"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="15dp"
+                    android:background="@drawable/bg_note_input"
+                    android:clickable="true"
+                    android:contentDescription="Show bullet points"
+                    android:focusable="true"
+                    android:padding="13dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_bullet_simple" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvPrivacyStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Privacy: Not locked"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvShortcutStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Shortcut: Off"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/layoutModeSelector"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/btnClassicMode"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_note_input"
+                    android:gravity="center"
+                    android:text="Classic"
+                    android:textColor="@color/primary_blue"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+                <TextView
+                    android:id="@+id/btnChatMode"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_note_input"
+                    android:gravity="center"
+                    android:text="Chat"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/classicContentSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/etNoteContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="450dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_note_input"
+                    android:gravity="top"
+                    android:hint="Start writing your note..."
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:minLines="8"
+                    android:padding="16dp"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_hint"
+                    android:textColorLink="@color/primary_blue"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/chatContentSection"
+                android:layout_width="match_parent"
+                android:layout_height="450dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_note_input"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:visibility="gone">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewNoteMessages"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:clipToPadding="false"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp" />
+
+                <LinearLayout
+                    android:id="@+id/chatInputSection"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <EditText
+                        android:id="@+id/etChatMessage"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_note_card"
+                        android:hint="Type message..."
+                        android:inputType="textCapSentences|textMultiLine"
+                        android:maxLines="3"
+                        android:paddingStart="14dp"
+                        android:paddingEnd="14dp"
+                        android:textColor="@color/text_primary"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/btnChatAddImage"
+                        android:layout_width="46dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="6dp"
+                        android:background="@drawable/bg_note_card"
+                        android:gravity="center"
+                        android:text="+"
+                        android:textColor="@color/primary_blue"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:clickable="true"
+                        android:focusable="true" />
+
+                    <TextView
+                        android:id="@+id/btnChatAddFile"
+                        android:layout_width="46dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="6dp"
+                        android:background="@drawable/bg_note_card"
+                        android:gravity="center"
+                        android:text="📎"
+                        android:textColor="@color/primary_blue"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:clickable="true"
+                        android:focusable="true" />
+
+                    <TextView
+                        android:id="@+id/btnSendChatMessage"
+                        android:layout_width="64dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="6dp"
+                        android:background="@drawable/bg_create_note_button"
+                        android:gravity="center"
+                        android:text="Send"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:clickable="true"
+                        android:focusable="true" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Bullet Points Section -->
+            <LinearLayout
+                android:id="@+id/bulletTitleOptionsSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="15dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tvBulletPointsTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Bullet Points"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btnBulletOptions"
+                    android:layout_width="90dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_note_input"
+                    android:gravity="center"
+                    android:text="Options"
+                    android:textColor="@color/primary_blue"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/btnAddBulletPoint"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_note_input"
+                android:gravity="center_vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="+ Add Bullet Point"
+                android:textColor="@color/primary_blue"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:clickable="true"
+                android:focusable="true"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewNoteBullets"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:nestedScrollingEnabled="false"
+                android:clipToPadding="false"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvEmptyBullets"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No bullet points added."
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                android:visibility="gone"
+                android:layout_marginTop="4dp" />
+
+            <!-- Image Section -->
+            <TextView
+                android:id="@+id/tvAttachedImagesTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Attached Images"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="gone"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewNoteImages"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:clipToPadding="false"
+                android:layout_marginBottom="15dp"/>
+
+<!--            file section-->
+
+            <TextView
+                android:id="@+id/tvAttachedFilesTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Attached Files"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="gone"/>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewNoteFiles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:layout_marginBottom="15dp"/>
+
+            <!-- Link Section -->
+            <TextView
+                android:id="@+id/tvAttachedLinksTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Attached Links"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewNoteLinks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:clipToPadding="false"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvEmptyLinks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No links attached."
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                android:visibility="gone"
+                android:layout_marginTop="4dp" />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/bottomButtonSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="22dp">
+
+        <LinearLayout
+            android:id="@+id/bottomClassicAttachmentButtons"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_gravity="start"
+            android:layout_marginBottom="40dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btnBottomAddImage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/bg_note_input"
+                android:clickable="true"
+                android:contentDescription="Add image"
+                android:elevation="4dp"
+                android:focusable="true"
+                android:padding="10dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_image_simple" />
+
+            <ImageButton
+                android:id="@+id/btnBottomAddFile"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
+                android:background="@drawable/bg_note_input"
+                android:clickable="true"
+                android:contentDescription="Add file"
+                android:elevation="4dp"
+                android:focusable="true"
+                android:padding="10dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_file_simple" />
+
+            <ImageButton
+                android:id="@+id/btnBottomToggleLinks"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
+                android:background="@drawable/bg_note_input"
+                android:clickable="true"
+                android:contentDescription="Show attached links"
+                android:elevation="4dp"
+                android:focusable="true"
+                android:padding="10dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_link_simple" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/btnSaveNote"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="end"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/bg_save_icon_button"
+            android:clickable="true"
+            android:contentDescription="Save note"
+            android:elevation="6dp"
+            android:focusable="true"
+            android:padding="16dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_check_save" />
+
+    </FrameLayout>
+
+</RelativeLayout>

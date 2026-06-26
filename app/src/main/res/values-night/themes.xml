@@ -1,0 +1,12 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application dark theme -->
+    <style name="Base.Theme.NoteAppOne" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Dark mode colors automatically come from colors-night.xml -->
+        <item name="colorPrimary">@color/primary_blue</item>
+        <item name="colorPrimaryDark">@color/primary_blue</item>
+        <item name="colorAccent">@color/primary_blue</item>
+    </style>
+
+    <!-- App dark theme -->
+    <style name="Theme.NoteAppOne" parent="Base.Theme.NoteAppOne" />
+</resources>

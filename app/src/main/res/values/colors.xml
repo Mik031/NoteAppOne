@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_main">#F8F9FA</color>
+    <color name="surface_card">#FFFFFF</color>
+    <color name="accent_blue">#3B82F6</color>
+    <color name="text_main">#111827</color>
+</resources>

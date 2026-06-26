@@ -11,6 +11,12 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+<<<<<<< HEAD
+=======
+plugins {
+    id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
+}
+>>>>>>> TodoList/main
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -19,6 +25,11 @@ dependencyResolutionManagement {
     }
 }
 
+<<<<<<< HEAD
 rootProject.name = "NoteAppOne"
 include(":app")
  
+=======
+rootProject.name = "TodoList"
+include(":app")
+>>>>>>> TodoList/main

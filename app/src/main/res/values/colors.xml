@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<<<<<<< HEAD
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
@@ -16,4 +17,10 @@
     <color name="primary_blue">#4A6CF7</color>
     <color name="danger_red">#E53935</color>
     <color name="icon_background">#EEF1FF</color>
+=======
+    <color name="bg_main">#F8F9FA</color>
+    <color name="surface_card">#FFFFFF</color>
+    <color name="accent_blue">#3B82F6</color>
+    <color name="text_main">#111827</color>
+>>>>>>> TodoList/main
 </resources>

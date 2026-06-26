@@ -1,6 +1,10 @@
 <resources>
+<<<<<<< HEAD
     <string name="app_name">NoteAppOne</string>
     <string name="text_expansion_accessibility_description">
         Detect text shortcuts like /dd and expand them into your saved note content.
     </string>
+=======
+    <string name="app_name">TodoList</string>
+>>>>>>> TodoList/main
 </resources>

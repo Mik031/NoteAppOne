@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+<<<<<<< HEAD
     alias(libs.plugins.kotlin.android)
 }
 
@@ -12,6 +13,21 @@ android {
     defaultConfig {
         applicationId = "com.example.noteappux"
         minSdk = 24
+=======
+}
+
+android {
+    namespace = "com.example.todolist"
+    compileSdk {
+        version = release(36) {
+            minorApiLevel = 1
+        }
+    }
+
+    defaultConfig {
+        applicationId = "com.example.todolist"
+        minSdk = 23
+>>>>>>> TodoList/main
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -28,11 +44,15 @@ android {
             )
         }
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> TodoList/main
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+<<<<<<< HEAD
 
     kotlinOptions {
         jvmTarget = "11"
@@ -54,4 +74,18 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+=======
+}
+
+dependencies {
+    implementation(libs.androidx.activity.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.material)
+    implementation(libs.play.services.gcm)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.androidx.junit)
+>>>>>>> TodoList/main
 }
